@@ -10,7 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var questionLabel: UILabel!
+    
+    @IBOutlet weak var currentQuestionLabel: UILabel!
+    @IBOutlet weak var nextQuestionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     
     var currentIndex = 0;
@@ -20,12 +22,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.questionLabel.text = questions[currentIndex].question
+        self.currentQuestionLabel.text = questions[currentIndex].question
         self.answerLabel.text = "???"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.questionLabel.alpha = 0
+        self.nextQuestionLabel.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +41,7 @@ class ViewController: UIViewController {
             currentIndex = 0
         }
         
-        self.questionLabel.text = questions[currentIndex].question
+        self.nextQuestionLabel.text = questions[currentIndex].question
         self.answerLabel.text = "???"
         
         animateLabelTransition()
@@ -53,8 +55,15 @@ class ViewController: UIViewController {
     // MARK: - Animations -
     func animateLabelTransition() {
         
-        UIView.animate(withDuration: 0.5) {
-            self.questionLabel.alpha = 1
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       options: [],
+                       animations: {
+                        self.currentQuestionLabel.alpha = 0
+                        self.nextQuestionLabel.alpha = 1
+        }) { _ in
+            swap(&self.currentQuestionLabel,
+                 &self.nextQuestionLabel)
         }
     }
     

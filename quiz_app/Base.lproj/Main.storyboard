@@ -65,7 +65,8 @@
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="MCc-Bv-tsn" id="7Hb-Hl-Dow"/>
-                        <outlet property="questionLabel" destination="UzG-IX-cvU" id="pU1-P5-xXl"/>
+                        <outlet property="currentQuestionLabel" destination="UzG-IX-cvU" id="aqg-ci-mDo"/>
+                        <outlet property="nextQuestionLabel" destination="UzG-IX-cvU" id="TTI-PT-xcG"/>
                         <outlet property="view" destination="UzG-IX-cvU" id="tK5-2n-TbD"/>
                     </connections>
                 </viewController>
